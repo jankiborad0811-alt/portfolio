@@ -94,24 +94,22 @@ function showMessage(){
 }
 
 
-
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-links a");
 
-window.addEventListener("scroll", () => {
+function setActiveLink() {
 
     let current = "";
 
     sections.forEach(section => {
 
-        const sectionTop = section.offsetTop - 180;
+        const sectionTop = section.offsetTop - 120;
         const sectionHeight = section.offsetHeight;
 
-        if (
-            window.scrollY >= sectionTop &&
-            window.scrollY < sectionTop + sectionHeight
-        ) {
-            current = section.id;
+        if (window.scrollY >= sectionTop &&
+            window.scrollY < sectionTop + sectionHeight) {
+
+            current = section.getAttribute("id");
         }
 
     });
@@ -121,10 +119,24 @@ window.addEventListener("scroll", () => {
         link.classList.remove("active");
 
         if (link.getAttribute("href") === "#" + current) {
-
             link.classList.add("active");
-
         }
+
+    });
+
+}
+
+window.addEventListener("scroll", setActiveLink);
+
+window.addEventListener("load", setActiveLink);
+
+navLinks.forEach(link => {
+
+    link.addEventListener("click", function () {
+
+        navLinks.forEach(item => item.classList.remove("active"));
+
+        this.classList.add("active");
 
     });
 
