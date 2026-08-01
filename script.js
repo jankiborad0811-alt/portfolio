@@ -85,13 +85,13 @@ hiddenElements.forEach(el=>observer.observe(el));
 
 
 
-// Contact Form
+//  Contact Form
 
-function showMessage(){
+// function showMessage(){
 
-    alert("Thank you! Your message has been received.");
+//     alert("Thank you! Your message has been received.");
 
-}
+// }
 
 
 const sections = document.querySelectorAll("section");
